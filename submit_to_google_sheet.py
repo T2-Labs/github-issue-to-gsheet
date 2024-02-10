@@ -6,7 +6,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 scope = ['https://www.googleapis.com/auth/spreadsheets']
 creds_json = os.getenv('GOOGLE_SHEETS_CREDENTIALS')
 print(creds_json)
-creds_dict = eval(creds_json)  # Convert JSON string to dictionary
+#creds_dict = eval(creds_json)  # Convert JSON string to dictionary
+creds_dict = json.loads(creds_json)
 creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 
 # Authenticate with the Google Sheets API
