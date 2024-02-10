@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check if GITHUB_TOKEN is accessible
+        run: echo "Token is accessible: ${{ secrets.GITHUB_TOKEN }}"
       - name: Check if issue body contains "obsolete"
         uses: actions/github-script@v5
         with:
