@@ -13,6 +13,11 @@ jobs:
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
+          if echo "${{ github.event.issue.body }}" | grep -iq "obsolete"; then
+            echo "Issue body contains the word 'obsolete'."
+          else
+            echo "Issue body does not contain the word 'obsolete'."
+          fi
       # - name: Check if issue body contains "obsolete"
       #   uses: actions/github-script@v5
       #   with:
