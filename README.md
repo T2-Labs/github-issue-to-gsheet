@@ -46,5 +46,8 @@ Adjust the regular expression in extract_id to match your specific ID format.
 Adapt the column index (1) in sheet.update_cell based on your sheet structure.
 
 
+## Resources
+- GitHub Actions https://docs.github.com/en/actions/quickstart
+
 
 
