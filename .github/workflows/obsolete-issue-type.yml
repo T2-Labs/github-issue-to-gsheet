@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: List directory contents
+        run: ls -lR
       - name: View issue information
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
