@@ -19,7 +19,7 @@ jobs:
           if echo "${{ github.event.issue.body }}" | grep -iq "obsolete"; then
             echo "Issue body contains the word 'obsolete'."
             export ISSUE_BODY="${{ github.event.issue.body }}"
-            python /home/runner/work/github-issue-to-gsheet/submit_to_google_sheet.py
+            python submit_to_google_sheet.py
           else
             echo "Issue body does not contain the word 'obsolete'."
           fi
