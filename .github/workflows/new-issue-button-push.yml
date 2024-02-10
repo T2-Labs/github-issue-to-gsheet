@@ -1,0 +1,39 @@
+name: New Issue Workflow
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process_issue:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for template label
+        id: check_template_label
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = await github.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+
+            const hasTemplateLabel = issue.data.labels.some(label => label.name === 'template');
+            console.log(`Has template label: ${hasTemplateLabel}`);
+            return hasTemplateLabel;
+
+      - name: React to button push
+        if: steps.check_template_label.outputs.has_template_label == 'true'
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'A button push occurred!'
+            });
