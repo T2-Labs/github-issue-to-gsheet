@@ -29,7 +29,7 @@ jobs:
             echo "Issue body does not contain the word 'obsolete'."
           fi
         env:
-          GOOGLE_SERVICE_ACCOUNT_KEY_JSON: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
       # - name: Check if issue body contains "obsolete"
       #   uses: actions/github-script@v5
       #   with:
