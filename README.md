@@ -5,6 +5,7 @@
 ```
 PyGithub
 gspread
+oauth2client
 ```
 
 Run `pip install -r requirements.txt`
