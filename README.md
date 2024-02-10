@@ -21,6 +21,7 @@ Run `pip install -r requirements.txt`
 - This is accessed as `${{ secrets.GH_TOKEN }}` in the `issue_template_to_sheet.yml` file.
 **Never commit this token to your repository or share it publicly.**
 
+
 4. Create a Service Account Key file to use for credentials for Google Sheets. Follow these steps:
 - Go to the Google Cloud Platform console (https://console.cloud.google.com/: https://console.cloud.google.com/).
 - Create a new project or select an existing one.
@@ -38,9 +39,11 @@ Store the JSON key file content as a secret named GOOGLE_SHEETS_CREDENTIALS in y
 - Add a secret name (e.g., GOOGLE_SHEETS_CREDENTIALS) and paste the key file content into the value field.
 - Access the secret in your workflow script (`issue_template_to_sheet.yml`) file using `${{secrets.GOOGLE_SHEETS_CREDENTIALS}}`.
 
+
 5. Update other placeholders in `submit_to_google_sheet.py`.
 Replace placeholders like Your_Spreadsheet_Name and repository name with your actual values.
 Securely store tokens and credentials as environment variables in your GitHub repository.
+
 
 6. Make sure the Google Sheet is also shared with the Google Service Account email address, e.g. ACTION-NAME@ORGANIZATION.iam.gserviceaccount.com
 
@@ -48,6 +51,10 @@ Securely store tokens and credentials as environment variables in your GitHub re
 
 ## Resources
 - GitHub Actions https://docs.github.com/en/actions/quickstart
+- GitHub Issue Templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#creating-issue-forms
+
+
+
 
 
 
