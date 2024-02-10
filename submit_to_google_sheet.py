@@ -12,7 +12,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 
 # Open the Google Sheet by its ID
-sheet_id = 'YOUR_GOOGLE_SHEET_ID'
+sheet_id = '1s-GTbL1GmHqeLm5gnWKUJEz5wmNSLzELB0fcZAS3RZo'
 sheet = client.open_by_key(sheet_id).sheet1
 
 # Get the issue body from environment variable
