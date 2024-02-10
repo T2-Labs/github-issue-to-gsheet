@@ -30,20 +30,19 @@ Run `pip install -r requirements.txt`
 - For the Service Account, click on Keys and then Add Key to create a new key. The key will automatically be downloaded to your local computer.
 - Download the JSON key file for the service account. Never share or commit this file publicly.
 
-Store the base64-encoded JSON key file content as a secret named GOOGLE_SHEETS_CREDENTIALS in your GitHub repository's secret settings. This involves encoding the file's content before storing it.
+Store the JSON key file content as a secret named GOOGLE_SHEETS_CREDENTIALS in your GitHub repository's secret settings.
 
-- Use a base64 encoder online or with a command-line tool to encode the downloaded key file content.
-	- For example, using `pybase64` run: `pybase64 encode your_credentials_file.json > base64-output.json`
 - Go to your GitHub repository's "Settings" -> "Actions" -> "Secrets".
 - Click "New repository secret."
-- Add a secret name (e.g., GOOGLE_SHEETS_CREDENTIALS) and paste the encoded key file content into the value field.
+- Add a secret name (e.g., GOOGLE_SHEETS_CREDENTIALS) and paste the key file content into the value field.
 - Access the secret in your workflow script (`issue_template_to_sheet.yml`) file using `${{secrets.GOOGLE_SHEETS_CREDENTIALS}}`.
 
-5. Update other placeholders in `script.py`.
-Replace placeholders like Your_Spreadsheet_Name, organization, and repository name with your actual values.
+5. Update other placeholders in `submit_to_google_sheet.py`.
+Replace placeholders like Your_Spreadsheet_Name and repository name with your actual values.
 Securely store tokens and credentials as environment variables in your GitHub repository.
-Adjust the regular expression in extract_id to match your specific ID format.
-Adapt the column index (1) in sheet.update_cell based on your sheet structure.
+
+6. Make sure the Google Sheet is also shared with the Google Service Account email address, e.g. ACTION-NAME@ORGANIZATION.iam.gserviceaccount.com
+
 
 
 ## Resources
