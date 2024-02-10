@@ -4,8 +4,8 @@ on:
   push:
     branches-ignore:
       - '*'
-  issues:
-    types: [opened]
+    issues:
+      types: [opened]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
