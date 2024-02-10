@@ -21,6 +21,8 @@ jobs:
               issue_number: context.issue.number
             });
 
+            console.log('Issue details:', issue);
+
             const hasTemplateLabel = issue.data.labels.some(label => label.name === 'template');
             console.log(`Has template label: ${hasTemplateLabel}`);
             return hasTemplateLabel;
