@@ -2,4 +2,3 @@ PyGithub
 gspread
 pybase64
 oauth2client
-json
