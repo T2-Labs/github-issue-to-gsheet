@@ -41,8 +41,8 @@ for line in lines:
         obsoleteion_reason = line.split("### Obsoleteion reason")[-1].strip()
 
 # Output the extracted values
-echo("Term to obsolete:", term_to_obsolete)
-echo("Obsoleteion reason:", obsoleteion_reason)
+print("** Term to obsolete:", term_to_obsolete)
+print("** Obsoleteion reason:", obsoleteion_reason)
 
 
 
