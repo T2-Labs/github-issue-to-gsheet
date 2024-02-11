@@ -7,9 +7,7 @@ on:
 jobs:
   check_issue_body:
     runs-on: ubuntu-latest
-    if: |
-      contains(github.event.issue.labels.*.name, '<on the list>'); then
-        echo "Issue label contains 'on the list'"
+
     steps:
       - uses: actions/checkout@v4
       - name: List directory contents
@@ -19,6 +17,11 @@ jobs:
           cd $GITHUB_WORKSPACE
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Check if label exists
+        if: |
+          contains(github.event.issue.labels.*.name, 'on the list')
+        run: |
+          echo "Issue label contains 'on the list'"
       - name: View issue information
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
