@@ -22,7 +22,7 @@ jobs:
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
           for label in "${{ github.event.issue.labels }}"; do
-            echo "Label name: $label.name"
+            echo "Label name: $label"
           done
           if echo "${{ github.event.issue.title }}" | grep -iq "obsolete"; then
             echo "Issue Title contains the word 'obsolete'."
