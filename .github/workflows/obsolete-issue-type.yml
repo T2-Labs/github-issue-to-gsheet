@@ -8,7 +8,7 @@ jobs:
   check_issue_body:
     runs-on: ubuntu-latest
     if: |
-      contains(github.event.issue.labels.*.name, '<on the list>')
+      contains(github.event.issue.labels.*.name, '<on the list>'); then
         echo "Issue label contains 'on the list'"
     steps:
       - uses: actions/checkout@v4
