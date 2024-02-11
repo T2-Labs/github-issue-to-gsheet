@@ -6,7 +6,6 @@ import json
 # Set up the Google Sheets API credentials
 scope = ['https://www.googleapis.com/auth/spreadsheets']
 creds_json = os.getenv('GOOGLE_SHEETS_CREDENTIALS')
-print(creds_json)
 #creds_dict = eval(creds_json)  # Convert JSON string to dictionary
 creds_dict = json.loads(creds_json)
 creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
@@ -31,18 +30,22 @@ lines = issue_body.split('\n')
 
 # Initialize variables to store extracted values
 term_to_obsolete = None
+term_label = None
 obsoleteion_reason = None
 
 # Iterate over each line to find the relevant information
-for line in lines:
-    if line.startswith("### What term do you want to request obsoleting?"):
-        term_to_obsolete = line.split("### What term do you want to request obsoleting?")[-1].strip()
-    elif line.startswith("### Obsoleteion reason"):
-        obsoleteion_reason = line.split("### Obsoleteion reason")[-1].strip()
+for index, line in enumerate(lines):
+  if line.strip() == '### What term do you want to request obsoleting?':
+    term_to_obsolete = lines[index + 2].strip()  # Get the next non-empty line
+  elif line.strip() == '### What is the label of the term you want to request obsoleting?':
+    term_label = lines[index + 2].strip()
+  elif line.strip() == '### Obsoleteion reason':
+    obsoleteion_reason = lines[index + 2].strip()
 
 # Output the extracted values
-echo("Term to obsolete:", term_to_obsolete)
-echo("Obsoleteion reason:", obsoleteion_reason)
+print("** Term to obsolete:", term_to_obsolete)
+print("Term label:", term_label)
+print("** Obsoleteion reason:", obsoleteion_reason)
 
 
 
@@ -52,7 +55,7 @@ echo("Obsoleteion reason:", obsoleteion_reason)
 
 # Define row data for different columns
 column1_data = term_to_obsolete
-column2_data = 'Value2'
+column2_data = term_label
 column3_data = obsoleteion_reason
 
 # Append row data into different columns
