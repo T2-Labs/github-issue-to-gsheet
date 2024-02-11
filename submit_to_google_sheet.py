@@ -35,3 +35,6 @@ column3_data = 'Value3'
 
 # Append row data into different columns
 row_data = [column1_data, column2_data, column3_data]
+
+# Append the issue to the Google Sheet
+sheet.append_row(row_data)
