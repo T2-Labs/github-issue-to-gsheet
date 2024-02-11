@@ -2,7 +2,7 @@ name: Obsolete Issue Check
 
 on:
   issues:
-    types: [opened, reopened]
+    types: [labeled]
 
 jobs:
   check_issue_body:
