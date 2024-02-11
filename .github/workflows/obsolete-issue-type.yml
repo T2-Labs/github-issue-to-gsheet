@@ -21,12 +21,12 @@ jobs:
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
-          if echo "${{ github.event.issue.body }}" | grep -iq "obsolete"; then
-            echo "Issue body contains the word 'obsolete'."
+          if echo "${{ github.event.issue.title }}" | grep -iq "obsolete"; then
+            echo "Issue Title contains the word 'obsolete'."
             export ISSUE_BODY="${{ github.event.issue.body }}"
             python submit_to_google_sheet.py
           else
-            echo "Issue body does not contain the word 'obsolete'."
+            echo "Issue Title does not contain the word 'obsolete'."
           fi
         env:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
