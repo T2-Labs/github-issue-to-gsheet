@@ -1,7 +1,7 @@
 name: Obsolete Term 
 description: Request that a term be obsoleted.
 title: "[Obsolete]: "
-labels: ["bug", "triage"]
+labels: ["obsolete"]
 projects: ["octo-org/1", "octo-org/44"]
 assignees:
   - octocat
@@ -24,14 +24,24 @@ body:
     attributes:
       label: What is the label of the term you want to request obsoleting?
       description: Add the term name.
-      # placeholder: Tell us what you see!
-      # value: "A bug happened!"
     validations:
       required: true
-  - type: textarea
+  - type: dropdown
     id: obsoletion-reason
     attributes:
-      label: Reason for obsoletion
+      label: Obsoleteion reason
+      description: What version of our software are you running?
+      options:
+        - option 1
+        - option 2
+        - option 3
+      default: 0
+    validations:
+      required: false
+  - type: textarea
+    id: obsoletion-reason-description
+    attributes:
+      label: Explain why this term should be obsoleted
       description: Why should this term be obsoleted?
     validations:
       required: true
