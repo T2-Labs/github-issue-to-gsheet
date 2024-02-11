@@ -29,7 +29,7 @@ body:
   - type: dropdown
     id: obsoletion-reason
     attributes:
-      label: Obsoleteion reason
+      label: Obsoletion reason
       description: What version of our software are you running?
       options:
         - option 1
