@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       contains(github.event.issue.labels.*.name, '<on the list>')
-      echo "Issue label contains 'on the list'"
+        echo "Issue label contains 'on the list'"
     steps:
       - uses: actions/checkout@v4
       - name: List directory contents
