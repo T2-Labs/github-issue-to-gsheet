@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
-          echo "Issue body: ${{ github.event.issue.label }}"
+          echo "Issue labels: ${{ github.event.issue.labels }}"
           if echo "${{ github.event.issue.title }}" | grep -iq "obsolete"; then
             echo "Issue Title contains the word 'obsolete'."
             export ISSUE_BODY="${{ github.event.issue.body }}"
