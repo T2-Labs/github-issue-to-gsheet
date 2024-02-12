@@ -35,14 +35,14 @@ jobs:
       #     echo "Issue label contains 'on the list'"
       
       - name: Install dependencies
-        if: steps.check-label.outputs.label_found == 'true'
+        # if: steps.check-label.outputs.label_found == 'true'
         run: |
           cd $GITHUB_WORKSPACE
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       
       - name: View issue information
-        if: steps.check-label.outputs.label_found == 'true'
+        # if: steps.check-label.outputs.label_found == 'true'
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
           echo "Issue body: ${{ github.event.issue.body }}"
