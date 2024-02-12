@@ -14,29 +14,18 @@ jobs:
       #   run: ls -lR
       - name: Check if label exists
         id: check_label
+        if: |
+          contains(github.event.issue.labels.*.name, 'on the list')
         run: |
-          label_found=false
-          for label in "${{ github.event.issue.labels }}"; do
-            if [[ "$label" == *"on the list"* ]]; then
-              echo "Issue label contains 'on the list'"
-              label_found=true
-              break
-            fi
-          done
+          label_found = false
+          echo "Issue label contains 'on the list'"
+          label_found=true
 
-          if [ "$label_found" = false ]; then
-            echo "Issue label does not contain 'on the list'"
-            echo "Existing labels:"
-            for label in "${{ github.event.issue.labels }}"; do
-              echo "- $label"
-            done
-          fi
-
-      # - name: Process based on label existence
-      #   if: steps.check_label.outputs.label_found == 'true'
-      #   run: |
-      #     # Perform actions if the label is found
-      #     echo "Performing actions because the label is found"
+      - name: Process based on label existence
+        if: steps.check_label.outputs.label_found == 'true'
+        run: |
+          # Perform actions if the label is found
+          echo "Performing actions because the label is found"
       
       # - name: Check if label exists
       #   if: |
