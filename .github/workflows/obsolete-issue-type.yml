@@ -13,17 +13,17 @@ jobs:
       # - name: List directory contents
       #   run: ls -lR
       - name: Check if label exists
-        id: check_label
+        id: check-label
         if: |
           contains(github.event.issue.labels.*.name, 'on the list')
         run: |
           echo "Issue label contains 'on the list'"
           echo "::set-output name=label_found::true"
           echo "{label_found}={true}" >> $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
+          echo ${{ steps.check-label.outputs.label_found }}"
 
       - name: Process based on label existence
-        if: steps.check_label.outputs.label_found == 'true'
+        if: steps.check-label.outputs.label_found == 'true'
         run: |
           # Perform actions if the label is found
           echo "Performing actions because the label is found"
