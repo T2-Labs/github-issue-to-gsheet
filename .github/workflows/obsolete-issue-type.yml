@@ -22,7 +22,7 @@ jobs:
           echo "{label_found}={true}" >> $GITHUB_OUTPUT
 
       - name: Process based on label existence
-        if: steps.check-label.outputs.label_found == true
+        # if: steps.check-label.outputs.label_found == true
         run: |
           echo "the label_found is ${{ steps.check-label.outputs.label_found}}"
           # Perform actions if the label is found
