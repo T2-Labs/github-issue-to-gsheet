@@ -5,7 +5,7 @@ on:
     types: [labeled]
 
 jobs:
-  check_issue_body:
+  check_obsolete_on_the_list_tag:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,11 +20,11 @@ jobs:
           echo "Issue label contains 'on the list'"
           # echo "::set-output name=label_found::true"
           echo "{label_found}={true}" >> $GITHUB_OUTPUT
-          echo "${{ steps.check-label.outputs.label_found }}"
 
       - name: Process based on label existence
-        if: steps.check-label.outputs.label_found == 'true'
+        # if: steps.check-label.outputs.label_found == 'true'
         run: |
+          echo "${{ steps.check-label.outputs.label_found }}"
           # Perform actions if the label is found
           echo "Performing actions because the label is found"
       
