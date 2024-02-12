@@ -19,7 +19,8 @@ jobs:
         run: |
           echo "Issue label contains 'on the list'"
           # echo "::set-output name=label_found::true"
-          echo "{label_found}={1}" >> $GITHUB_OUTPUT
+          is_found = 1
+          echo "{label_found}=$is_found" >> $GITHUB_OUTPUT
 
       - name: Process based on label existence
         # if: steps.check-label.outputs.label_found == true
