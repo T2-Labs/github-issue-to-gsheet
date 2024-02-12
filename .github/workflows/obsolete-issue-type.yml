@@ -24,7 +24,7 @@ jobs:
       - name: Process based on label existence
         if: steps.check-label.outputs.label_found == 'true'
         run: |
-          echo "steps.check-label.outputs.label_found"
+          echo "the label_found is ${{ steps.check-label.outputs.label_found}}"
           # Perform actions if the label is found
           echo "Performing actions because the label is found"
       
