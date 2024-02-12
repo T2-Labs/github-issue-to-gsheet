@@ -10,18 +10,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: List directory contents
-        run: ls -lR
-      - name: Install dependencies
-        run: |
-          cd $GITHUB_WORKSPACE
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      # - name: List directory contents
+      #   run: ls -lR
       - name: Check if label exists
         if: |
           contains(github.event.issue.labels.*.name, 'on the list')
         run: |
           echo "Issue label contains 'on the list'"
+      - name: Install dependencies
+        run: |
+          cd $GITHUB_WORKSPACE
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - name: View issue information
         run: |
           echo "Issue title: ${{ github.event.issue.title }}"
