@@ -35,7 +35,7 @@ for index, line in enumerate(lines):
     curie_to_obsolete = lines[index + 2].strip()  # Get the next non-empty line
   elif line.strip() == '### What is the label of the term you want to request obsoleting?':
     term_label = lines[index + 2].strip()
-  elif line.strip() == '### Obsoleteion reason':
+  elif line.strip() == '### Obsoletion reason':
     obsoletion_reason = lines[index + 2].strip()
 
 # Output the extracted values
