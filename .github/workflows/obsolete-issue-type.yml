@@ -49,7 +49,7 @@ jobs:
           # for label in "${{ github.event.issue.labels }}"; do
           #   echo "Label name: $label"
           # done
-          if echo "${{ github.event.issue.title }}" | grep -q "[Obsolete]:"; then
+          if echo "${{ github.event.issue.title }}" | grep -q "\[Obsolete\]:"; then
             echo "Issue Title contains the word '[Obsolete]: and is from an Obsolete Issue template'."
             export ISSUE_BODY="${{ github.event.issue.body }}"
             python submit_to_google_sheet.py
