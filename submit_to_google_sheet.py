@@ -27,7 +27,7 @@ lines = issue_body.split('\n')
 # Initialize variables to store extracted values
 curie_to_obsolete = None
 term_label = None
-obsoleteion_reason = None
+obsoletion_reason = None
 
 # Iterate over each line to find the relevant information
 for index, line in enumerate(lines):
@@ -36,12 +36,12 @@ for index, line in enumerate(lines):
   elif line.strip() == '### What is the label of the term you want to request obsoleting?':
     term_label = lines[index + 2].strip()
   elif line.strip() == '### Obsoleteion reason':
-    obsoleteion_reason = lines[index + 2].strip()
+    obsoletion_reason = lines[index + 2].strip()
 
 # Output the extracted values
 print("** Term to obsolete:", curie_to_obsolete)
 print("** Term label:", term_label)
-print("** Obsoleteion reason:", obsoleteion_reason)
+print("** Obsoletion reason:", obsoletion_reason)
 
 
 # TODO: Validate values from ISSUE_BODY, e.g. Mondo ID, and fail Action if invalid
@@ -55,7 +55,7 @@ if not re.match(pattern, curie_to_obsolete):
 # Define row data for different columns
 column1_data = curie_to_obsolete
 column2_data = term_label
-column3_data = obsoleteion_reason
+column3_data = obsoletion_reason
 
 # Append row data into different columns
 row_data = [column1_data, column2_data, column3_data]
