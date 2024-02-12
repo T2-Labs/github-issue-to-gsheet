@@ -21,7 +21,7 @@ jobs:
           # echo "::set-output name=label_found::true"
           echo "label_found=true" >> $GITHUB_OUTPUT
 
-      - name: Process based on label existence
+      - name: Test if label was found
         if: steps.check-label.outputs.label_found == 'true'
         run: |
           echo "the label_found is ${{ steps.check-label.outputs.label_found}}"
@@ -33,18 +33,22 @@ jobs:
       #     contains(github.event.issue.labels.*.name, 'on the list')
       #   run: |
       #     echo "Issue label contains 'on the list'"
-      # - name: Install dependencies
-      #   run: |
-      #     cd $GITHUB_WORKSPACE
-      #     python -m pip install --upgrade pip
-      #     pip install -r requirements.txt
+      
+      - name: Install dependencies
+        if: steps.check-label.outputs.label_found == 'true'
+        run: |
+          cd $GITHUB_WORKSPACE
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
       # - name: View issue information
+      #   if: steps.check-label.outputs.label_found == 'true'
       #   run: |
       #     echo "Issue title: ${{ github.event.issue.title }}"
       #     echo "Issue body: ${{ github.event.issue.body }}"
-      #     for label in "${{ github.event.issue.labels }}"; do
-      #       echo "Label name: $label"
-      #     done
+      #     # for label in "${{ github.event.issue.labels }}"; do
+      #     #   echo "Label name: $label"
+      #     # done
       #     if echo "${{ github.event.issue.title }}" | grep -q "[Obsolete]:"; then
       #       echo "Issue Title contains the word '[Obsolete]: and is from an Obsolete Issue template'."
       #       export ISSUE_BODY="${{ github.event.issue.body }}"
