@@ -29,12 +29,12 @@ jobs:
           for label in "${{ github.event.issue.labels }}"; do
             echo "Label name: $label"
           done
-          if echo "${{ github.event.issue.title }}" | grep -iq "obsolete"; then
-            echo "Issue Title contains the word 'obsolete'."
+          if echo "${{ github.event.issue.title }}" | grep -q "[Obsolete]:"; then
+            echo "Issue Title contains the word '[Obsolete]: and is from an Obsolete Issue template'."
             export ISSUE_BODY="${{ github.event.issue.body }}"
             python submit_to_google_sheet.py
           else
-            echo "Issue Title does not contain the word 'obsolete'."
+            echo "Issue Title does not contain the word '[Obsolete]:'."
           fi
         env:
           GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
