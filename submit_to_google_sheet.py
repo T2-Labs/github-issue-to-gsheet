@@ -21,6 +21,8 @@ sheet = client.open_by_key(sheet_id).sheet1
 # Get the issue body from environment variable
 issue_body = os.getenv('ISSUE_BODY')
 
+issue_url = os.getenv('ISSUE_URL')
+
 # Split the issue body by lines
 lines = issue_body.split('\n')
 
@@ -44,7 +46,7 @@ print("** Term label:", term_label)
 print("** Obsoletion reason:", obsoletion_reason)
 
 
-# TODO: Validate values from ISSUE_BODY, e.g. Mondo ID, and fail Action if invalid
+# Validate values from ISSUE_BODY, e.g. Mondo ID, and fail Action if invalid
 pattern = r'MONDO:\d{7}$'
 
 # Check if the curie_to_obsolete string matches the pattern
@@ -56,9 +58,10 @@ if not re.match(pattern, curie_to_obsolete):
 column1_data = curie_to_obsolete
 column2_data = term_label
 column3_data = obsoletion_reason
+column4_data = issue_url
 
 # Append row data into different columns
-row_data = [column1_data, column2_data, column3_data]
+row_data = [column1_data, column2_data, column3_data, column4_data]
 
 # Append the issue to the Google Sheet
 # sheet.append_row([issue_body]) # appends the entire ISSUE_BODY to a google sheet row unstructured (ie all info in one column)

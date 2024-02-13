@@ -52,7 +52,7 @@ Securely store tokens and credentials as environment variables in your GitHub re
 ## Resources
 - GitHub Actions https://docs.github.com/en/actions/quickstart
 - GitHub Issue Templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository#creating-issue-forms
-
+- GitHub Action Triggers for Issues https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#issues
 
 
 
